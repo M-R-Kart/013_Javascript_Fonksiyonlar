@@ -1,2 +1,0 @@
-# 013_Javascript_Fonksiyonlar
-013_Javascript_Fonksiyonlar
