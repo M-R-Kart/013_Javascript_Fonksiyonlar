@@ -77,6 +77,19 @@ console.log(carp(3, 4));
 Çıktı:
 12
 
+let kareAl = (a) => a * a;
+console.log(kareAl(5));
+
+Çıktı;
+25
+
+let topla = (a, b) => a + b;
+
+console.log(topla(3, 4));
+
+Çıktı;
+7
+
 * Eğer fonksiyon yalnızca bir satırsa ve bir ifade dönüyorsa, süslü parantezler ({}) ve 
   return anahtar kelimesine gerek yoktur. Daha karmaşık fonksiyonlar için ise yine {} kullanılır.
 
