@@ -1,59 +1,121 @@
-//! SCOPE KAVRAMI
+//! Object Literals
 
-//! 1) Global Scope
+JavaScript te object (nesne), birden fazla değeri tek bir yapıda saklamamızı sağlayan 
+veri türüdür. Her değerin bir anahtarı (key) ve değeri (value) vardır. 
+Object literals ise JavaScript te nesne oluşturmanın en basit yoludur; 
+süslü parantezler {} içinde anahtar-değer çiftleriyle nesne tanımlanır.
 
-var veri1 = 5;
-let veri2 = 10;
-const veri3 = 15;
+//! 1) Object Literals ile Nesne Oluşturma :
+Object literals, anahtar-değer çiftlerini kullanarak nesneleri tanımlamak için kullanılır. 
+Aşağıda basit bir örnek bulunuyor.
 
-//! 2) Function Scope
+// let firstName = "Muhammet";
+// let lastName = "Kart";
 
-function fonksiyon() {
-  //! Function Scope diğerlerine göre önceliği olur.
+// let firstName2 = "Muhammet";
+// let lastName2 = "Kart"; //! Kullanımı kesinlikle çok zor.
 
-  var veri1 = 30;
-  let veri2 = 40;
-  const veri3 = 50;
+// let muhammet = ["Muhammet","Kart","28"];
+// let esra = ["Esra","Yaşlı",40];  //! Kullanımı kesinlikle çok zor.
 
-  console.log(veri1, veri2, veri3); //! Function belirtilen değerler öncelikli olduğu için 30 40 50 çıkar.
-}
+  //? Örnek:
 
-fonksiyon();
+    let kisi = {
+      ad: "Ahmet",       // anahtar: ad, değer: "Ahmet"
+      yas: 25,           // anahtar: yas, değer: 25
+      meslek: "Mühendis" // anahtar: meslek, değer: "Mühendis"
+    };
+    
+    Bu örnekte, kisi adlı nesne üç farklı anahtar-değer çiftinden oluşuyor: ad, yas ve meslek.
 
-console.log(veri1, veri2, veri3); //! Fonsiyon görevini tamamlar sonra 5 10 15 şeklinde çıkar.
+//! /////////////////////////////////////////////////////////////////////////////////////////
 
-//! 3) Block Scope
+//! 2) Nesneye Erişim:
+Bir nesnenin içerisindeki verilere iki farklı yolla erişebilirsin.
 
-if (true) {
-  var a = 10;
-  let b = 20;
-  const c = 30;
-}
+  //! a. Nokta Notasyonu (.)
 
-console.log(a); //! var komutunu yazdığımızda gösterir
-console.log(b); //! let komutu tanımlı değil gösterir.
-console.log(c); //! const komutu tanımlı değil gösterir.
+    //? Örnek: 
 
-/*
-block içerisinde değişken tanımlarken eğer (var) komutu kullanılırsa block dışında da 
-geçerliliğini sürdürür (var) olmaya devam eder. Fakat block içerisinde let ve const
-yapısını kullanarak oluşturduğumuz değişkenler sadece block içerisinde görevlerini
-sürdürürken block dışında sürdüremezler. Hem block içerisinde ve dışında kullanmak istersek
-var değişkenin kullanabiliriz.
-*/
+      let kisi = {
+      ad: "Ahmet",
+      yas: 25, 
+      meslek: "Mühendis",
+      };
+    
+      console.log(kisi.ad); // "Ahmet"
+      console.log(kisi.yas); // 25
+  
+  //! ************************************************
 
-if (true) {
-  var veri1 = 10;
-  let veri2 = 20;
-  const veri3 = 30;
+  //! b. Köşeli Parantez Notasyonu ([])
+  Anahtarın bir string olduğu durumlarda veya dinamik bir anahtar kullanıldığında kullanılır.   
 
-  console.log(veri1, veri2, veri3); //* block içerisinde kullanıldığı için tüm değişkenler görevini tamamlar.
-}
-console.log(veri1, veri2, veri3);
+    //? Örnek: 
 
-var admin_password = "111111"; //! block dışında var kullanılırsa şifre değişir. let ve const kullanmak daha sağlıklı
+      let kisi = {
+        ad: "Ahmet", // anahtar: ad, değer: "Ahmet"
+        yas: 25, // anahtar: yas, değer: 25
+        meslek: "Mühendis", // anahtar: meslek, değer: "Mühendis"
+      };
+      
+      console.log(kisi["meslek"]); // "Mühendis"
+      
+    *  Nokta notasyonu en yaygın ve okunaklı yöntemdir.
+    *  Köşeli parantez notasyonu ise özellikle anahtar adı bir değişken olduğunda kullanılır.
+  
+//! /////////////////////////////////////////////////////////////////////////////////////////
 
-if (true) {
-  var admin_password = "222222";
-}
-console.log(admin_password);
+//! 3. Nesneye Yeni Özellik Ekleme veya Mevcut Özelliği Değiştirme
+Nesneye yeni bir özellik eklemek için basitçe nokta notasyonu veya köşeli parantez 
+notasyonu kullanabilirsin.
+
+  //! a. Yeni Özellik Ekleme:
+
+    //? Örnek: 
+
+      let kisi = {
+        ad: "Ahmet", // anahtar: ad, değer: "Ahmet"
+        yas: 25, // anahtar: yas, değer: 25
+        meslek: "Mühendis", // anahtar: meslek, değer: "Mühendis"
+      };
+
+      kisi.soyad = "Yılmaz"; // Yeni Özellik eklendi.
+      console.log(kisi.soyad); // Yılmaz
+
+  //! ************************************************
+
+  //! b. Mevcut Özelliği Değiştirme:
+    
+    //? Örnek:
+
+      let kisi = {
+        ad: "Ahmet", // anahtar: ad, değer: "Ahmet"
+        yas: 25, // anahtar: yas, değer: 25
+        meslek: "Mühendis", // anahtar: meslek, değer: "Mühendis"
+      };
+      
+      kisi.ad = "Mehmet"; // Mevcu ad değişti.
+      console.log(kisi.ad); // Mehmet
+
+//! /////////////////////////////////////////////////////////////////////////////////////////
+
+//! 4. Nesne İçinde Fonksiyon (Yöntem) Tanımlama
+Nesneler yalnızca verileri tutmaz, aynı zamanda fonksiyonlar da içerebilir. 
+Bu fonksiyonlara yöntem (method) denir.
+
+    //? Örnek: 
+
+      let kisi = {
+        ad: "Ahmet", // anahtar: ad, değer: "Ahmet"
+        yas: 25, // anahtar: yas, değer: 25
+        selamVer: function () {
+          console.log("Merhaba, benim adım" + " " + this.ad);
+        },
+      };
+      
+      kisi.selamVer(); // "Merhaba, benim adım Ahmet"
+
+    * Burada selamVer, kisi nesnesine ait bir fonksiyondur.
+    * this anahtar kelimesi, o anki nesneyi ifade eder. 
+      Yani this.ad, kisi nesnesindeki ad özelliğine işaret eder.    
